@@ -76,7 +76,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
   
-    - run: dotnet pack ${{github.workspace}}/src/Lib/Lib.csproj --configuration Release --output ${{env.NuGetDirectory}} -p:PackageVersion=${{ env.semVer }} 
+    - run: dotnet pack ${{github.workspace}}/src/Lib/Lib.csproj --configuration Release --output ${{env.NuGetDirectory}} -p:PackageVersion=${{ env.semVer }} -p:Version=${{ env.semVer }} -p:AssemblyVersion=${{ env.semVer }}
   
     - uses: actions/upload-artifact@v4
       with:
