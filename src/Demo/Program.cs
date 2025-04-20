@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 var host = Host.CreateApplicationBuilder(args);
 
 
-host.AddFlintMediatR();
+host.AddFlintSoftCQRS();
 
 var app = host.Build();
 
