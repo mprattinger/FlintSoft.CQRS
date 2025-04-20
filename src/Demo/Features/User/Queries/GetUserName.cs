@@ -8,9 +8,9 @@ public static class GetUserName
 
     internal sealed class Handler : IRequestHandler<Query, string>
     {
-        public string Handle(Query request)
+        public async Task<string> Handle(Query request, CancellationToken cancellationToken)
         {
-            return Environment.UserName;
+            return await Task.FromResult(Environment.UserName);
         }
     }
 }

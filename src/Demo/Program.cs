@@ -12,6 +12,6 @@ var app = host.Build();
 
 var sp = app.Services;
 var gun = sp.GetRequiredService<IRequestHandler<GetUserName.Query, string>>();
-Console.WriteLine(gun.Handle(new GetUserName.Query()));
+Console.WriteLine(await gun.Handle(new GetUserName.Query()));
 
 await app.StartAsync();

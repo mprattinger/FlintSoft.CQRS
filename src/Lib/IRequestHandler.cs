@@ -3,5 +3,5 @@
 public interface IRequestHandler<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
 {
-    TResponse Handle(TRequest request);
+    Task<TResponse> Handle(TRequest request, CancellationToken cancellation = default);
 }
