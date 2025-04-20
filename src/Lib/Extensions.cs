@@ -6,7 +6,7 @@ namespace Lib;
 
 public static class Extensions
 {
-    public static IHostApplicationBuilder? AddFlintMediatR(this IHostApplicationBuilder? builder)
+    public static IHostApplicationBuilder? AddFlintSoftCQRS(this IHostApplicationBuilder? builder)
     {
         var assembly = Assembly.GetExecutingAssembly();
 
