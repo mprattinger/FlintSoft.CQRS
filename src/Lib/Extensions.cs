@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
 
-namespace Lib;
+namespace FlintSoft.CQRS;
 
 public static class Extensions
 {

@@ -1,4 +1,4 @@
-﻿using Lib;
+﻿using FlintSoft.CQRS;
 
 namespace Demo.Features.User.Queries;
 
