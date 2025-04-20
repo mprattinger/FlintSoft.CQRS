@@ -4,7 +4,6 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>FlintSoft.CQRS</RootNamespace>
     <PackageId>FlintSoft.CQRS</PackageId>
     <Authors>MPrattinger</Authors>
     <Company>FlintSoft</Company>
