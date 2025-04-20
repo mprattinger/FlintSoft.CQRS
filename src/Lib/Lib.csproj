@@ -5,6 +5,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>FlintSoft.CQRS</RootNamespace>
+    <id>FlintSoft.CQRS</id>
+    <title>FlintSoft.CQRS</title>
+    <authors>MPrattinger</authors>
+    <description>Implementation of the CQRS Pattern</description>
   </PropertyGroup>
 
   <ItemGroup>
