@@ -1,5 +1,6 @@
 ﻿namespace FlintSoft.CQRS;
 
+[Obsolete]
 public interface IRequestHandler<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
 {
