@@ -3,7 +3,7 @@ using FlintSoft.CQRS;
 
 namespace Demo.Features.User.Commands;
 
-public static class CreateUserCommand
+public static class CreateUser
 {
     public record Command(string UserName) : ICommand<Guid>;
 

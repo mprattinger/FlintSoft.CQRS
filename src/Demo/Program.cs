@@ -1,28 +1,24 @@
-﻿using Demo.Features.User.Queries;
+﻿using Demo.Features.User.Commands;
+using Demo.Features.User.Queries;
 using FlintSoft.CQRS;
+using Lib;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 var host = Host.CreateApplicationBuilder(args);
 
-host?.Services.Scan(scan => scan.FromAssembliesOf(typeof(Program))
-    .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<,>)), publicOnly: false)
-        .AsImplementedInterfaces()
-        .WithScopedLifetime()
-    .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<>)), publicOnly: false)
-        .AsImplementedInterfaces()
-        .WithScopedLifetime()
-    .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<,>)), publicOnly: false)
-        .AsImplementedInterfaces()
-        .WithScopedLifetime()
-);
-
-host.AddFlintSoftCQRS();
+host.AddFlintSoftCQRS(typeof(Program));
 
 var app = host.Build();
 
 var sp = app.Services;
 var gun = sp.GetRequiredService<IQueryHandler<GetUserName.Query, string>>();
-Console.WriteLine(await gun.Handle(new GetUserName.Query(), new CancellationToken()));
+var cru = sp.GetRequiredService<ICommandHandler<CreateUser.Command, Guid>>();
+
+var result = await gun.Handle(new GetUserName.Query(), new CancellationToken());
+Console.WriteLine(result.IsError ? result.Errors.First().Description : result.Value);
+
+var createUserResult = await cru.Handle(new CreateUser.Command("John Doe"), new CancellationToken());
+Console.WriteLine(createUserResult.IsError ? createUserResult.Errors.First().Description : createUserResult.Value);
 
 await app.StartAsync();
