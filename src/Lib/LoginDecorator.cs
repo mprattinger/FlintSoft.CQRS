@@ -3,7 +3,7 @@ using ErrorOr;
 using FlintSoft.CQRS;
 using Microsoft.Extensions.Logging;
 
-namespace Lib;
+namespace FlintSoft.CQRS;
 
 public static class LoggingDecorator
 {

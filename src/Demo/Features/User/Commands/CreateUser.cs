@@ -11,6 +11,7 @@ public static class CreateUser
     {
         public async Task<ErrorOr<Guid>> Handle(Command command, CancellationToken cancellationToken)
         {
+            throw new NotImplementedException("This is a stub implementation. Replace with actual logic.");
             return await Task.FromResult(Guid.NewGuid());
         }
     }

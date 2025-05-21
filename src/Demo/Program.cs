@@ -1,7 +1,6 @@
 ﻿using Demo.Features.User.Commands;
 using Demo.Features.User.Queries;
-using FlintSoft.CQRS;
-using Lib;
+using FlintSoft.CQRS;   
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 

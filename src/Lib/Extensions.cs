@@ -1,5 +1,4 @@
-﻿using Lib;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Scrutor;
 
@@ -36,7 +35,7 @@ public static class Extensions
         }
         catch (DecorationException ex)
         {
-            Console.WriteLine($"Error decorating IQueryHandler: {ex.Message}");
+            Console.WriteLine($"Error decorating ICommandHandler: {ex.Message}");
         }
 
         try
@@ -45,7 +44,34 @@ public static class Extensions
         }
         catch (DecorationException ex)
         {
+            Console.WriteLine($"Error decorating ICommandHandler: {ex.Message}");
+        }
+
+        try
+        {
+            builder?.Services.Decorate(typeof(IQueryHandler<,>), typeof(ExceptionDecorator.QueryHandler<,>));
+        }
+        catch (DecorationException ex)
+        {
             Console.WriteLine($"Error decorating IQueryHandler: {ex.Message}");
+        }
+
+        try
+        {
+            builder?.Services.Decorate(typeof(ICommandHandler<,>), typeof(ExceptionDecorator.CommandHandler<,>));
+        }
+        catch (DecorationException ex)
+        {
+            Console.WriteLine($"Error decorating ICommandHandler: {ex.Message}");
+        }
+
+        try
+        {
+            builder?.Services.Decorate(typeof(ICommandHandler<>), typeof(ExceptionDecorator.CommandBaseHandler<>));
+        }
+        catch (DecorationException ex)
+        {
+            Console.WriteLine($"Error decorating ICommandHandler: {ex.Message}");
         }
 
 
