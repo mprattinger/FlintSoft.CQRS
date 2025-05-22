@@ -1,6 +1,7 @@
 using ErrorOr;
+using FlintSoft.CQRS.Interfaces;
 
-namespace FlintSoft.CQRS;
+namespace FlintSoft.CQRS.Handlers;
 
 public interface IQueryHandler<in TQuery, TResponse>
     where TQuery : IQuery<TResponse>

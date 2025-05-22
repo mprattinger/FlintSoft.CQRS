@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FlintSoft.CQRS.Decorators;
+using FlintSoft.CQRS.Handlers;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Scrutor;
 
@@ -73,26 +75,6 @@ public static class Extensions
         {
             Console.WriteLine($"Error decorating ICommandHandler: {ex.Message}");
         }
-
-
-
-
-
-        // var assembly = Assembly.GetExecutingAssembly();
-
-        // var handlers = assembly
-        //    .DefinedTypes
-        //    .Where(type => type is { IsAbstract: false, IsInterface: false })
-        //    .Where(type => type.GetInterfaces()
-        //        .Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<,>)))
-        //    .Select(type => ServiceDescriptor.Transient(type.GetInterfaces()
-        //        .First(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<,>)), type))
-        //    .ToList();
-
-        // handlers.ForEach(r =>
-        // {
-        //     builder?.Services.Add(r);
-        // });
 
         return builder;
     }

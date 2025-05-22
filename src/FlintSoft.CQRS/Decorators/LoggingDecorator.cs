@@ -1,9 +1,9 @@
-using System;
 using ErrorOr;
-using FlintSoft.CQRS;
+using FlintSoft.CQRS.Handlers;
+using FlintSoft.CQRS.Interfaces;
 using Microsoft.Extensions.Logging;
 
-namespace FlintSoft.CQRS;
+namespace FlintSoft.CQRS.Decorators;
 
 public static class LoggingDecorator
 {
@@ -28,10 +28,6 @@ public static class LoggingDecorator
             else
             {
                 logger.LogError("Completed command {Command} with error", commandName);
-                // using (LogContext.PushProperty("Error", result.Error, true))
-                // {
-                //     logger.LogError("Completed command {Command} with error", commandName);
-                // }
             }
 
             return result;
@@ -59,10 +55,6 @@ public static class LoggingDecorator
             else
             {
                 logger.LogError("Completed command {Command} with error", commandName);
-                // using (LogContext.PushProperty("Error", result.Error, true))
-                // {
-                //     logger.LogError("Completed command {Command} with error", commandName);
-                // }
             }
 
             return result;
@@ -90,10 +82,6 @@ public static class LoggingDecorator
             else
             {
                 logger.LogError("Completed query {Query} with error", queryName);
-                // using (LogContext.PushProperty("Error", result.Error, true))
-                // {
-                //     logger.LogError("Completed query {Query} with error", queryName);
-                // }
             }
 
             return result;

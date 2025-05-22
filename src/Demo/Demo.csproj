@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lib\Lib.csproj" />
+    <ProjectReference Include="..\FlintSoft.CQRS\FlintSoft.CQRS.csproj" />
   </ItemGroup>
 
 </Project>

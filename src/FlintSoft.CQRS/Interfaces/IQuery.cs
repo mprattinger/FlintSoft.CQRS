@@ -1,3 +1,3 @@
-namespace FlintSoft.CQRS;
+namespace FlintSoft.CQRS.Interfaces;
 
 public interface IQuery<TResponse>;

@@ -1,6 +1,8 @@
 using ErrorOr;
+using FlintSoft.CQRS.Handlers;
+using FlintSoft.CQRS.Interfaces;
 
-namespace FlintSoft.CQRS;
+namespace FlintSoft.CQRS.Decorators;
 
 public static class ExceptionDecorator
 {
