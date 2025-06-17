@@ -1,4 +1,5 @@
 ﻿using FlintSoft.CQRS.Decorators;
+using FlintSoft.CQRS.Events;
 using FlintSoft.CQRS.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -75,6 +76,14 @@ public static class Extensions
         {
             Console.WriteLine($"Error decorating ICommandHandler: {ex.Message}");
         }
+
+        builder?.Services.Scan(scan => scan.FromAssembliesOf(type)
+            .AddClasses(classes => classes.AssignableTo(typeof(IDomainEventHandler<>)), publicOnly: false)
+            .AsImplementedInterfaces()
+            .WithScopedLifetime()
+        );
+
+        builder?.Services.AddTransient<IDomainEventDispatcher, DomainEventDispatcher>();
 
         return builder;
     }

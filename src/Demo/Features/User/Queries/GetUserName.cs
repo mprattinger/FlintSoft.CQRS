@@ -10,9 +10,10 @@ public static class GetUserName
 
     internal sealed class Handler : IQueryHandler<Query, string>
     {
-        public async Task<ErrorOr<string>> Handle(Query query, CancellationToken cancellationToken)
+        public Task<ErrorOr<string>> Handle(Query query, CancellationToken cancellationToken)
         {
-            return await Task.FromResult(Environment.UserName);
+            throw new NotImplementedException("This is a stub implementation. Replace with actual logic.");
+            //return await Task.FromResult(Environment.UserName);
         }
     }
 }
