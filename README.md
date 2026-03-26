@@ -262,7 +262,7 @@ await app.StartAsync();
 | Package | Version | Purpose |
 |---|---|---|
 | [ErrorOr](https://github.com/amantinband/error-or) | 2.0.1 | Railway-oriented error handling |
-| [Scrutor](https://github.com/khellang/Scrutor) | 6.0.1 | Assembly scanning & decorator registration |
+| [Scrutor](https://github.com/khellang/Scrutor) | 7.0.0 | Assembly scanning & decorator registration |
 | Microsoft.Extensions.Hosting.Abstractions | 9.0.5 | `IHostApplicationBuilder` DI integration |
 
 ## Target Framework
