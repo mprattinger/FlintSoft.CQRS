@@ -1,3 +1,4 @@
+using Demo.Features.User.Events;
 using ErrorOr;
 using FlintSoft.CQRS.Handlers;
 using FlintSoft.CQRS.Interfaces;
@@ -7,7 +8,7 @@ namespace Demo.Features.User.Commands;
 
 public static class CreateUser
 {
-    public record Command(string UserName) : ICommand<Guid>;
+    public record Command(string UserName, string Password, string Email, string FirstName, string LastName) : ICommand<User>;
 
     public class Validator : AbstractValidator<Command>
     {
@@ -19,7 +20,7 @@ public static class CreateUser
 
     internal sealed class Handler : ICommandHandler<Command, Guid>
     {
-        public async Task<ErrorOr<Guid>> Handle(Command command, CancellationToken cancellationToken)
+        public async Task<ErrorOr<User>> Handle(Command command, CancellationToken cancellationToken)
         {
             if (command.UserName == "error")
             {

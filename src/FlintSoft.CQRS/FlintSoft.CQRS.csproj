@@ -7,6 +7,10 @@
 	<PackageId>FlintSoft.CQRS</PackageId>
     <Authors>MPrattinger</Authors>
     <Company>FlintSoft</Company>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/mprattinger/FlintSoft.CQRS</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/mprattinger/FlintSoft.CQRS</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
