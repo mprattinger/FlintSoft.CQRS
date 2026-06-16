@@ -2,6 +2,7 @@ using Demo.Features.User.Events;
 using ErrorOr;
 using FlintSoft.CQRS.Handlers;
 using FlintSoft.CQRS.Interfaces;
+using FluentValidation;
 
 namespace Demo.Features.User.Commands;
 
@@ -9,23 +10,29 @@ public static class CreateUser
 {
     public record Command(string UserName, string Password, string Email, string FirstName, string LastName) : ICommand<User>;
 
-    internal sealed class Handler : ICommandHandler<Command, User>
+    public class Validator : AbstractValidator<Command>
+    {
+        public Validator()
+        {
+            RuleFor(x => x.UserName).NotEmpty();
+        }
+    }
+
+    internal sealed class Handler : ICommandHandler<Command, Guid>
     {
         public async Task<ErrorOr<User>> Handle(Command command, CancellationToken cancellationToken)
         {
-            var user = new User(
-                command.UserName,
-                command.Password,
-                command.Email,
-                command.FirstName,
-                command.LastName
-            );
+            if (command.UserName == "error")
+            {
+                throw new NotImplementedException("Error creating the user");
+            }
 
-            // Here you would typically save the user to a database or some other storage.
+            if (command.UserName == "wrong")
+            {
+                return Error.Failure("USER_CREATE_FAILED", $"Failure creating user!");
+            }
 
-            user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id));
-
-            return await Task.FromResult(user);
+            return await Task.FromResult(Guid.NewGuid());
         }
     }
 }

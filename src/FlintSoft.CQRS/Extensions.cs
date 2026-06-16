@@ -27,54 +27,73 @@ public static class Extensions
         {
             builder?.Services.Decorate(typeof(IQueryHandler<,>), typeof(LoggingDecorator.QueryHandler<,>));
         }
-        catch (DecorationException ex)
+        catch (DecorationException)
         {
-            Console.WriteLine($"Error decorating IQueryHandler: {ex.Message}");
+
         }
 
         try
         {
             builder?.Services.Decorate(typeof(ICommandHandler<,>), typeof(LoggingDecorator.CommandHandler<,>));
         }
-        catch (DecorationException ex)
+        catch (DecorationException)
         {
-            Console.WriteLine($"Error decorating ICommandHandler: {ex.Message}");
         }
 
         try
         {
             builder?.Services.Decorate(typeof(ICommandHandler<>), typeof(LoggingDecorator.CommandBaseHandler<>));
         }
-        catch (DecorationException ex)
+        catch (DecorationException)
         {
-            Console.WriteLine($"Error decorating ICommandHandler: {ex.Message}");
         }
 
         try
         {
             builder?.Services.Decorate(typeof(IQueryHandler<,>), typeof(ExceptionDecorator.QueryHandler<,>));
         }
-        catch (DecorationException ex)
+        catch (DecorationException)
         {
-            Console.WriteLine($"Error decorating IQueryHandler: {ex.Message}");
         }
 
         try
         {
             builder?.Services.Decorate(typeof(ICommandHandler<,>), typeof(ExceptionDecorator.CommandHandler<,>));
         }
-        catch (DecorationException ex)
+        catch (DecorationException)
         {
-            Console.WriteLine($"Error decorating ICommandHandler: {ex.Message}");
         }
 
         try
         {
             builder?.Services.Decorate(typeof(ICommandHandler<>), typeof(ExceptionDecorator.CommandBaseHandler<>));
         }
-        catch (DecorationException ex)
+        catch (DecorationException)
         {
-            Console.WriteLine($"Error decorating ICommandHandler: {ex.Message}");
+        }
+
+        try
+        {
+            builder?.Services.Decorate(typeof(IQueryHandler<,>), typeof(ValidationDecorator.QueryHandler<,>));
+        }
+        catch (DecorationException)
+        {
+        }
+
+        try
+        {
+            builder?.Services.Decorate(typeof(ICommandHandler<,>), typeof(ValidationDecorator.CommandHandler<,>));
+        }
+        catch (DecorationException)
+        {
+        }
+
+        try
+        {
+            builder?.Services.Decorate(typeof(ICommandHandler<>), typeof(ValidationDecorator.CommandBaseHandler<>));
+        }
+        catch (DecorationException)
+        {
         }
 
         builder?.Services.Scan(scan => scan.FromAssembliesOf(type)
